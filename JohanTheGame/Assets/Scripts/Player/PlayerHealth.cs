@@ -13,7 +13,13 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
+
+        if(healthBar == null)
+        {
+            healthBar = GameObject.FindGameObjectWithTag("PlayerHpBar").GetComponent<HealthBar>();
+        }
     }
+
     public void TakeDamage(int damage = 1)
     {
         currentHealth -= damage;

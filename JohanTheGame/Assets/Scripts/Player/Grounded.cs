@@ -5,13 +5,16 @@ using UnityEngine;
 public class Grounded : MonoBehaviour
 {
     Movement plMove;
+    bool timerOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
         plMove = GetComponentInParent<Movement>();
+        Physics2D.IgnoreLayerCollision(12, 11);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.layer == 8)
         {
@@ -19,7 +22,7 @@ public class Grounded : MonoBehaviour
             plMove.ResetJumps();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 8)
         {

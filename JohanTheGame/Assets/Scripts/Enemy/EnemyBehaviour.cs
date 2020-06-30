@@ -8,6 +8,10 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody2D rb;
     bool alive = true;
     bool moveLeft = true;
+
+    public float moveSpeed;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +36,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (moveLeft)
         {
-            rb.velocity = new Vector2(-3, 0);
+            rb.velocity = new Vector2(-3 * moveSpeed * Time.deltaTime, 0);
         }
         else
         {
-            rb.velocity = new Vector2(3, 0);
+            rb.velocity = new Vector2(3 * moveSpeed * Time.deltaTime, 0);
         }
     }
 
