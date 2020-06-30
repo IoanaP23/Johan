@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
     private int totalJumps = 1;
     private int jumpsLeft;
 
+    private int hasJumped = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,9 +75,11 @@ public class Movement : MonoBehaviour
             jumpsLeft--;
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            //Maybe initial jumpheight
             rb.velocity = Vector2.up * jumpForce / 15;
+
+            
         }
+
         if (Input.GetButton("Jump") && isJumping == true)
         {
             if (jumpTimeCounter > 0)
