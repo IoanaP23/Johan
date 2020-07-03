@@ -23,7 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(alive == true)
         {
-            Move();
+            UpdatePlayerPosition();
         }
     }
     public void Dead()
@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
         anim.SetTrigger("Dead");
         Destroy(gameObject, 0.25f);
     }
-    void Move()
+    void UpdatePlayerPosition()
     {
         if (moveLeft)
         {
