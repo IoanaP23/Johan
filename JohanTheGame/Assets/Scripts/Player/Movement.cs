@@ -131,4 +131,9 @@ public class Movement : MonoBehaviour
     {
         animator.SetBool("isJumping", flag);
     }
+
+    public void SetIsFallingAnimator(bool flag)
+    {
+        animator.SetBool("isFalling", flag);
+    }
 }
