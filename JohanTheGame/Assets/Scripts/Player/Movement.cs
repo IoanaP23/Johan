@@ -42,7 +42,10 @@ public class Movement : MonoBehaviour
         PlayerInput();
         MovePlayer();
 
-        animator.SetInteger("moveSpeed", (int) moveInputX);
+        if(isGrounded == true)
+        {
+            animator.SetInteger("moveSpeed", (int)moveInputX);
+        }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
