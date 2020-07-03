@@ -7,7 +7,8 @@ public class Movement : MonoBehaviour
     public ParticleSystem dust;
 
     private Rigidbody2D rb;
-    public float moveSpeed = 10;
+    public float maxSpeed = 10;
+    private float currentSpeed = 0.1f;
     private float moveInputX;
 
     public float jumpForce;
@@ -77,6 +78,11 @@ public class Movement : MonoBehaviour
             transform.localScale = new Vector2(1, transform.localScale.y);
         }
 
+        if(moveInputX == 0)
+        {
+            currentSpeed = 0;
+        }
+
         if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
         {
             jumpsLeft--;
@@ -103,9 +109,13 @@ public class Movement : MonoBehaviour
 
     void MovePlayer()
     {
-        rb.transform.position += new Vector3(moveInputX * moveSpeed * Time.deltaTime, 0, 0);
+        if(currentSpeed <= maxSpeed)
+        {
+            currentSpeed += 0.1f;
+        }
+
+        rb.transform.position += new Vector3(moveInputX * currentSpeed * Time.deltaTime, 0, 0);
         //If space is pressed, jump
-        
     }
     public void MiniJump()
     {
