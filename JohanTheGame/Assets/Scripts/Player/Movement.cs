@@ -44,7 +44,11 @@ public class Movement : MonoBehaviour
 
         if(isGrounded == true)
         {
-            animator.SetInteger("moveSpeed", (int)moveInputX);
+            animator.SetFloat("moveSpeed", Mathf.Abs(moveInputX));
+        }
+        else
+        {
+            animator.SetInteger("moveSpeed", 0);
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -77,10 +81,9 @@ public class Movement : MonoBehaviour
         {
             jumpsLeft--;
             isJumping = true;
+            SetIsJumpingAnimator(true);
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce / 15;
-
-            
         }
 
         if (Input.GetButton("Jump") && isJumping == true)
@@ -122,5 +125,10 @@ public class Movement : MonoBehaviour
     public void ResetJumps()
     {
         jumpsLeft = totalJumps;
+    }
+
+    public void SetIsJumpingAnimator(bool flag)
+    {
+        animator.SetBool("isJumping", flag);
     }
 }

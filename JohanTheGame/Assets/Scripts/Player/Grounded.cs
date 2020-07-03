@@ -20,6 +20,7 @@ public class Grounded : MonoBehaviour
         {
             plMove.isGrounded = true;
             plMove.ResetJumps();
+            plMove.SetIsJumpingAnimator(false);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -29,4 +30,6 @@ public class Grounded : MonoBehaviour
             plMove.isGrounded = false;
         }
     }
+
+    
 }
