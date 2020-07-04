@@ -78,11 +78,6 @@ public class Movement : MonoBehaviour
             transform.localScale = new Vector2(1, transform.localScale.y);
         }
 
-        if(moveInputX == 0)
-        {
-            currentSpeed = 0;
-        }
-
         if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
         {
             jumpsLeft--;
@@ -109,12 +104,8 @@ public class Movement : MonoBehaviour
 
     void MovePlayer()
     {
-        if(currentSpeed <= maxSpeed)
-        {
-            currentSpeed += 0.1f;
-        }
 
-        rb.transform.position += new Vector3(moveInputX * currentSpeed * Time.deltaTime, 0, 0);
+        rb.transform.position += new Vector3(moveInputX * maxSpeed * Time.deltaTime, 0, 0);
         //If space is pressed, jump
     }
     public void MiniJump()
